@@ -1,0 +1,103 @@
+<button class="add-btn" (click)="openResourceAdd()" [disabled]="!activeButton" style="margin-bottom: 15px; margin-top: 20px ;margin-left: 15px"> Add Resource</button>
+<button class="confirm-btn" (click)="checkReservationIntervals()" [disabled]="!activeButton" style="margin-bottom: 15px; margin-top: 20px ; margin-right: 15px;float: right;"> Test Reservation Intervals</button>
+
+<div class="table" style="height: 90%; justify-content: flex-end;">
+  <header>Resources</header>
+  <div style="margin-bottom: 25px;">
+    <tr>
+      <td style="width: 30px">
+          #
+      </td>
+      <td class='name-col-resources'>
+        Resource name
+      </td>
+      <td class='name-col-resources'>
+        </td>
+    </tr>
+  </div>
+    <div *ngFor="let resource of resources; index as i">
+        <div>
+          <tr>
+            <td style="width: 30px">
+              {{ i + 1 }}
+            </td>
+            <td class='name-col-resources'>
+              {{ resource.resource_name }}
+            </td>
+            <td class='name-col-resources' style="border: none">
+              <button type="button" class="edit-btn" (click)="openResourceEdit(resource)" [disabled]="!activeButton">  Edit
+                </button>
+                <button type="button" class="delete-btn" (click)="deleteResource(resource)" [disabled]="!activeButton"> Delete
+                  </button>
+            </td>
+          </tr>
+        </div>
+    </div>
+</div>
+
+<button class="add-btn" (click)="openReservationAdd()" [disabled]="!activeButton" style="margin-bottom: 15px; margin-top: 60px; margin-left: 15px"> Add Reservation</button>
+
+<div class="table" style="height: 90%; justify-content: flex-end;">
+    <header>Reservations</header>
+      <div style="margin-bottom: 25px">
+          <tr>
+            <td style="width: 30px">
+                #
+            </td>
+            <td class='name-col-reservations'>
+              Reservation name
+            </td>
+            <td class='name-col-reservations'>
+              Resource name
+            </td>
+            <td class='name-col-reservations'>
+              Owner email
+            </td>
+            <td class='name-col-reservations'>
+                Comments
+            </td>
+            <td class='name-col-reservations'>
+                Start Date
+            </td>
+            <td class='name-col-reservations'>
+                End Date
+            </td>
+            <td class='name-col-reservations'>
+
+            </td>
+          </tr>
+      </div>
+      <div *ngFor="let reservation of reservations; index as i" class="tr-body tr">
+        <div>
+          <tr>
+            <td style="width: 30px">
+              {{ i + 1 }}
+            </td>
+            <td class='name-col-reservations'>
+              {{ reservation.reservation_name }}
+            </td>
+            <td class='name-col-reservations'>
+              {{ findResource(reservation) }}
+            </td>
+            <td class='name-col-reservations'>
+                {{ reservation.owner_email }}
+            </td>
+            <td class='name-col-reservations'>
+                {{ reservation.comments }}
+            </td>
+            <td class='name-col-reservations'>
+                {{ formatDate(reservation.start_date) }}
+            </td>
+            <td class='name-col-reservations'>
+                {{ formatDate(reservation.end_date) }}
+            </td>
+            <td class='name-col-reservations' style="border: none">
+              <button type="button" class="edit-btn" (click)="openReservationEdit(reservation)" [disabled]="!activeButton">  Edit
+                </button>
+                <button type="button" class="delete-btn" (click)="deleteReservation(reservation)" [disabled]="!activeButton"> Delete
+                  </button>
+             </td>
+         </tr>
+        </div>
+      </div>
+</div>

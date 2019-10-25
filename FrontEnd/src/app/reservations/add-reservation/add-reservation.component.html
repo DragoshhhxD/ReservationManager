@@ -1,0 +1,58 @@
+<div class="modal-header">
+    Add Reservation
+</div>
+
+<div style="flex: 1; flex-flow: column">
+  <div class="form-col">
+      <label style="padding-right: 10px;">Reservation name: </label>
+      <div></div>
+      <input type="text" [(ngModel)]='name' style="min-width: 260px">
+  </div>
+  <div class="form-col">
+      <label style="padding-right: 10px;">Owner email: </label>
+      <div></div>
+      <input type="text" [(ngModel)]='email' style="min-width: 260px">
+  </div>
+  <div class="form-col">
+      <label style="padding-right: 10px;">Comments: </label>
+      <div></div>
+      <input type="text" [(ngModel)]='comments' style="min-width: 260px">
+  </div>
+  <div class="form-col">
+      <label style="padding-right: 10px;">Resource: </label>
+      <div></div>
+      <select [(value)]="resources[0].resource_id" [(ngModel)]="resource_id" style="min-width: 260px">
+          <option [(value)]="resource.resource_id" *ngFor="let resource of resources">{{resource.resource_name}}</option>
+        </select>
+  </div>
+  <div class="form-col">
+    <label style="padding-right: 10px;">Start date: </label>
+    <div></div>
+    <input placeholder="yyyy-mm-dd" (click)="d.toggle()" style="min-width: 260px"
+            name="dp" [(ngModel)]="start_date" ngbDatepicker [footerTemplate]="footerTemplateStart"
+           #d="ngbDatepicker" [(minDate)]="today" outsideDays="hidden">
+  </div>
+  <ng-template #footerTemplateStart>
+      <hr class="my-0">
+      <button class="btn btn-primary btn-sm m-2 float-left" (click)="start_date = today; d.close()">Today</button>
+      <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">Close</button>
+  </ng-template>
+
+  <div class="form-col">
+      <label style="padding-right: 10px;">End date: </label>
+      <div></div>
+      <input placeholder="yyyy-mm-dd" (click)="de.toggle()" style="min-width: 260px"
+              name="dp" [(ngModel)]="end_date" ngbDatepicker [footerTemplate]="footerTemplateEnd"
+             #de="ngbDatepicker" [(minDate)]="today" outsideDays="hidden">
+    </div>
+    <ng-template #footerTemplateEnd>
+        <hr class="my-0">
+        <button class="btn btn-primary btn-sm m-2 float-left" (click)="end_date = today; de.close()">Today</button>
+        <button class="btn btn-secondary btn-sm m-2 float-right" (click)="de.close()">Close</button>
+    </ng-template>
+    <div style="padding-top: 15px; padding-left: 15px">
+      <button class="confirm-btn" (click)="add()" [disabled]="name.length < 1 || email.length < 1 || comments.length < 1"> Add </button>
+      <button class="cancel-btn" style="margin-left: 120px" (click)="cancel()"> Cancel </button>
+    </div>
+</div>
+<br>

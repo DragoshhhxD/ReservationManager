@@ -1,0 +1,14 @@
+<div class="modal-header">
+    Edit Resource
+</div>
+
+<div style="padding-top: 10px; padding-left: 15px">
+    <label><label>Resource name</label></label>
+    <div></div>
+    <input type="text" [(ngModel)]='resource.resource_name' style="min-width: 260px">
+</div>
+<div style="padding-top: 15px; padding-left: 15px">
+  <button class="confirm-btn" (click)="edit()" [disabled]="resource.resource_name.length < 1"> <label>Edit</label> </button>
+  <button class="cancel-btn" style="margin-left: 120px" (click)="cancel()"> <label>Cancel</label> </button>
+</div>
+<br>

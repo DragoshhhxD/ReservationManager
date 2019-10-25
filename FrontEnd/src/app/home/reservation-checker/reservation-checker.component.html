@@ -1,0 +1,50 @@
+<div class="modal-header">
+    Check reservation intervals
+</div>
+
+<ngb-carousel #myCarousel="ngbCarousel" [interval]="false">
+    <ng-template ngbSlide>
+      <div style="flex: 1; flex-flow: column">
+          <div style="flex: 1; display: flex;">
+              <div class="form-col" style="margin-right: 100px">
+                  <label style="padding-right: 10px;">Number of reservations: </label>
+                  <div></div>
+                  <input type="number" [(ngModel)]='N'>
+              </div>
+              <div class="form-col">
+                  <label style="padding-right: 10px;">Number of resources: </label>
+                  <div></div>
+                  <input type="number" [(ngModel)]='K'>
+              </div>
+          </div>
+          <div style="padding-top: 15px; padding-left: 15px">
+              <button class="confirm-btn" (click)="next()" [disabled]="!N || !K" style="margin-right: 275px"> Next </button>
+              <button class="cancel-btn" style="margin-left: 20px" (click)="cancel()"> Cancel </button>
+          </div>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div style="flex: 1; display: flex;">
+          <div style="flex: 1; flex-flow: column">
+              <div class="form-col">
+                  <label style="padding-right: 10px;">Arrivals: </label>
+                  <div *ngFor="let au of aux, index as i">
+                    <input type="number" [(ngModel)]='arrivals[i]' style="margin-top: 4px; margin-bottom: 4px">
+                  </div>
+              </div>
+          </div>
+          <div style="flex: 1; flex-flow: column">
+              <div class="form-col">
+                  <label style="padding-right: 10px;">Departures: </label>
+                  <div *ngFor="let au of aux, index as i">
+                    <input type="number" [(ngModel)]='departures[i]' style="margin-top: 4px; margin-bottom: 4px">
+                  </div>
+              </div>
+          </div>
+      </div>
+        <div style="padding-top: 15px; padding-left: 15px">
+            <button class="confirm-btn" (click)="testValues()" style="margin-right: 275px"> Try </button>
+            <button class="cancel-btn" style="margin-left: 20px" (click)="prevSlide()"> Back </button>
+        </div>
+      </ng-template>
+</ngb-carousel>

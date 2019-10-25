@@ -1,0 +1,14 @@
+<div class="modal-header">
+    Add Resource
+</div>
+
+<div style="padding-top: 10px; padding-left: 15px">
+    <label><label>Resource name</label></label>
+    <div></div>
+    <input type="text" [(ngModel)]='name' style="min-width: 260px">
+</div>
+<div style="padding-top: 15px; padding-left: 15px">
+  <button class="confirm-btn" (click)="add()" [disabled]="name.length < 1"> <label>Add</label> </button>
+  <button class="cancel-btn" style="margin-left: 120px" (click)="cancel()"> <label>Cancel</label> </button>
+</div>
+<br>

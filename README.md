@@ -1,6 +1,7 @@
 # ReservationManager
+## Autor: Bologa Dragos-Mihai
+
 Basic NodeJs/Angular web application for a reservation manager.
-Autor: Bologa Dragos-Mihai
 
 
 Tehnologi Folosite: 
